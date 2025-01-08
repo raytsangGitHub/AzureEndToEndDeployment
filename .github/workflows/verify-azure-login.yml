@@ -1,0 +1,20 @@
+name: Verify Azure Credentials
+
+on:
+  workflow_dispatch: # Allows manual trigger of the workflow
+
+jobs:
+  verify-login:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.ENDTOENDCREDENTIALS}}
+
+    - name: List Azure Subscriptions
+      run: az account list --output table
