@@ -14,7 +14,7 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{ }}
+        creds: ${{ ENDTOENDCREDENTIALS}}
 
     - name: List Azure Subscriptions
       run: az account list --output table
